@@ -1,0 +1,24 @@
+version: "3.2"
+
+services:
+  # This listens on *.back1.test and *.back2.test and redirects to back1.test or back2.test
+  front:
+    build:
+      context: ./front
+    volumes:
+     - ./front/html:/usr/share/nginx/html
+    ports:
+     - "80:80"
+     - "443:443"
+
+  back1:
+    build:
+      context: ./back1
+    volumes:
+     - ./back1/html:/usr/share/nginx/html
+
+  back2:
+    build:
+      context: ./back2
+    volumes:
+     - ./back2/html:/usr/share/nginx/html
